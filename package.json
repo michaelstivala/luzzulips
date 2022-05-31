@@ -22,13 +22,18 @@
     "generate_metadata": "node utils/generate_metadata.js",
     "add_image_hash": "node utils/add_image_hash.js",
     "calculate_provenance": "node utils/calculate_provenance.js",
+    "upload": "node utils/upload.mjs",
     "shuffle_order": "node utils/shuffle_order.js"
   },
   "author": "Daniel Eugene Botha (HashLips)",
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.8.0",
+    "dotenv": "^16.0.1",
+    "files-from-path": "^0.2.6",
     "gif-encoder-2": "^1.0.5",
+    "mime": "^3.0.0",
+    "nft.storage": "^6.3.0",
     "sha1": "^1.1.1"
   }
 }

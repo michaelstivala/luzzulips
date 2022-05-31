@@ -136,5 +136,5 @@ module.exports = {
   network,
   solanaMetadata,
   gif,
-  preview_gif,
+  preview_gif
 };

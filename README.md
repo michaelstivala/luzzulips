@@ -297,3 +297,20 @@ Hope you create some awesome artworks with this code 👄
 
 These are additional features that I've added.
 
+### Add image hash
+
+Calculates a sha256 hash for each image and saves it to the corresponding metadata. It's important to run this once before calculating the provenance.
+
+### Calculate provenance
+
+Creates a "provenance" hash by hashing all the image hashes in ascending order and outputting the generated hash.
+
+### Shuffle order
+
+Shuffles the order of the images and corresponding metadata.
+
+### Upload
+
+Uploads all the images to IPFS, updates the metadata with the correct URL (and strips everything except for the `image` and `attributes` fields), and uploads the metadata to IPFS too. The console will spit out a baseUri that can be used to update the smart contract.
+
+Before using make sure there is a valid NFT_STORAGE_TOKEN in the `.env` file (from https://nft.storage).
