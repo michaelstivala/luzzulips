@@ -1,26 +1,6 @@
 # Welcome to HashLips 👄
 
-![](https://github.com/HashLips/hashlips_art_engine/blob/main/logo.png)
-
-All the code in these repos was created and explained by HashLips on the main YouTube channel.
-
-To find out more please visit:
-
-[📺 YouTube](https://www.youtube.com/channel/UC1LV4_VQGBJHTJjEWUmy8nA)
-
-[👄 Discord](https://discord.com/invite/qh6MWhMJDN)
-
-[💬 Telegram](https://t.me/hashlipsnft)
-
-[🐦 Twitter](https://twitter.com/hashlipsnft)
-
-[ℹ️ Website](https://hashlips.online/HashLips)
-
-# HashLips Art Engine 🔥
-
-![](https://github.com/HashLips/hashlips_art_engine/blob/main/banner.png)
-
-Create generative art by using the canvas api and node js. Before you use the generation engine, make sure you have node.js(v10.18.0) installed.
+This is a fork of the HashLips NFT generative tool with some added functionality for develping PFP NFT Collections.
 
 ## Installation 🛠️
 
@@ -311,3 +291,9 @@ Trait type: Top lid
 ```
 
 Hope you create some awesome artworks with this code 👄
+
+
+## Additional usage ℹ️
+
+These are additional features that I've added.
+

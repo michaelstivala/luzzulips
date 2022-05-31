@@ -12,8 +12,7 @@ async function main() {
     throw new Error('No hash found in metadata.json');
   }
 
-  let hash = data.map(h => h.hash).join('')
-
+  let hash = data.sort((a,b) => a.edition - b.edition).map(h => h.hash).join('')
   let provenance = crypto.createHash('sha256');
   provenance.setEncoding('hex');
   provenance.write(hash);

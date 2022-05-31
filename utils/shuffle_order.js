@@ -1,6 +1,5 @@
 const basePath = process.cwd();
 const fs = require("fs");
-const crypto = require('crypto');
 
 // read json data
 let rawdata = fs.readFileSync(`${basePath}/build/json/_metadata.json`);
@@ -29,6 +28,11 @@ async function main() {
     fs.renameSync(
       `${basePath}/build/images/_${data[i].edition}.png`,
       `${basePath}/build/images/${order[i]}.png`
+    );
+
+    // delete json files
+    fs.unlinkSync(
+      `${basePath}/build/json/${data[i].edition}.json`
     );
 
     // update the metadata

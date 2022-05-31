@@ -33,13 +33,9 @@ async function main() {
     data[i].hash = await computeHash(`${basePath}/build/images/${data[i].edition}.png`)
   
     console.log(data[i].hash);
-    
-    fs.writeFileSync(
-      `${basePath}/build/json/${data[i].edition}.json`,
-      JSON.stringify(data[i], null, 2)
-    );
   }
   
+  // we only add the hash to the _metadata.json file
   fs.writeFileSync(
     `${basePath}/build/json/_metadata.json`,
     JSON.stringify(data, null, 2)
