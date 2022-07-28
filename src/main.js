@@ -106,6 +106,10 @@ const layersSetup = (layersOrder) => {
       layerObj.options?.["bypassDNA"] !== undefined
         ? layerObj.options?.["bypassDNA"]
         : false,
+    resolver:
+      layerObj.options?.["resolver"] !== undefined
+        ? layerObj.options?.["resolver"]
+        : false,
   }));
   return layers;
 };
@@ -172,9 +176,16 @@ const addMetadata = (_dna, _edition) => {
 
 const addAttributes = (_element) => {
   let selectedElement = _element.layer.selectedElement;
+  // console.log("addAttributes")
+  // console.log(_element)
   attributesList.push({
     trait_type: _element.layer.name,
-    value: selectedElement.name,
+    // if selectedElement.name contains an "@" remove everything before it
+    // this is to allow us to use the @ symbol as a special delimiter
+    // when writing our custom resolvers
+    value: selectedElement.name.includes("@")
+      ? selectedElement.name.split("@").pop()
+      : selectedElement.name,
   });
 };
 
@@ -281,24 +292,33 @@ const isDnaUnique = (_DnaList = new Set(), _dna = "") => {
 const createDna = (_layers) => {
   let randNum = [];
   _layers.forEach((layer) => {
-    var totalWeight = 0;
-    layer.elements.forEach((element) => {
-      totalWeight += element.weight;
-    });
-    // number between 0 - totalWeight
-    let random = Math.floor(Math.random() * totalWeight);
-    for (var i = 0; i < layer.elements.length; i++) {
-      // subtract the current weight from the random weight until we reach a sub zero value.
-      random -= layer.elements[i].weight;
-      if (random < 0) {
-        return randNum.push(
-          `${layer.elements[i].id}:${layer.elements[i].filename}${
-            layer.bypassDNA ? "?bypassDNA=true" : ""
-          }`
-        );
+    // console.log(layer)
+    
+
+    if (layer.resolver && layer.resolver(layer, randNum)) {
+      randNum.push(layer.resolver(layer, randNum))
+    } else {
+      var totalWeight = 0;
+      layer.elements.forEach((element) => {
+        totalWeight += element.weight;
+      });
+       // number between 0 - totalWeight
+      let random = Math.floor(Math.random() * totalWeight);
+      for (var i = 0; i < layer.elements.length; i++) {
+        // subtract the current weight from the random weight until we reach a sub zero value.
+        random -= layer.elements[i].weight;
+        if (random < 0) {
+          return randNum.push(
+            `${layer.elements[i].id}:${layer.elements[i].filename}${
+              layer.bypassDNA ? "?bypassDNA=true" : ""
+            }`
+          );
+        }
       }
     }
+   
   });
+  // console.log(randNum);
   return randNum.join(DNA_DELIMITER);
 };
 
@@ -384,6 +404,7 @@ const startCreating = async () => {
           if (background.generate) {
             drawBackground();
           }
+
           renderObjectArray.forEach((renderObject, index) => {
             drawElement(
               renderObject,

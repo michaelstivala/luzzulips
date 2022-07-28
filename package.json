@@ -1,7 +1,7 @@
 {
-  "name": "hashlips_art_engine",
-  "version": "1.1.1",
-  "description": "HashLips Art Engine is a tool used to create multiple different instances of artworks based on provided layers.",
+  "name": "luzzu_lips",
+  "version": "1.0.0",
+  "description": "LuzzuLips Art Engine is a tool used to create multiple different instances of artworks based on provided layers.",
   "main": "index.js",
   "bin": "index.js",
   "pkg": {
@@ -22,8 +22,10 @@
     "generate_metadata": "node utils/generate_metadata.js",
     "add_image_hash": "node utils/add_image_hash.js",
     "calculate_provenance": "node utils/calculate_provenance.js",
+    "calculate_live_provenance": "node utils/calculate_live_provenance.js",
     "upload": "node utils/upload.mjs",
-    "shuffle_order": "node utils/shuffle_order.js"
+    "shuffle_order": "node utils/shuffle_order.js",
+    "finalise_metadata": "node utils/finalise_metadata.js"
   },
   "author": "Daniel Eugene Botha (HashLips)",
   "license": "MIT",

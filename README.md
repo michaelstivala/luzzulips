@@ -1,4 +1,8 @@
-# Welcome to HashLips 👄
+# Quick start
+
+After configuring, run `npm run build` to generate the images and metadata.
+
+# Welcome to LuzzuLips 👄
 
 This is a fork of the HashLips NFT generative tool with some added functionality for develping PFP NFT Collections.
 
